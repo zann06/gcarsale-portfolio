@@ -1,19 +1,60 @@
 import Hero from '@/components/Hero';
+import ServicesSnapshot from '@/components/ServicesSnapshot';
 import FeaturedUnits from '@/components/FeaturedUnits';
 import ConsignmentHighlight from '@/components/ConsignmentHighlight';
 import Merchandise from '@/components/Merchandise';
 import Insights from '@/components/Insights';
 import About from '@/components/About';
+import ProcessTimeline from '@/components/ProcessTimeline';
+import FAQ from '@/components/FAQ';
 import ContactCTA from '@/components/ContactCTA';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+
 import { Bolt, Wrench } from 'lucide-react';
+import { siteConfig } from '@/data/site';
 
 export default function Home() {
+  const businessLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: siteConfig.name,
+    description: siteConfig.meta.description,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: siteConfig.contact.address,
+      addressCountry: 'ID',
+    },
+    telephone: siteConfig.contact.phoneLabel,
+    url: siteConfig.instagramUrl,
+  };
+
+  const personLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Garry Saleh',
+    jobTitle: 'Founder / Lead Inspector',
+    worksFor: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+    },
+  };
+
   return (
     <main className="relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(businessLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
+      />
+
       <Hero />
+      <ServicesSnapshot />
 
       <div className="relative">
+        {/* Decorative icons */}
         <div className="pointer-events-none absolute inset-0 hidden md:block">
           <div className="absolute left-8 top-10 h-24 w-24 opacity-20">
             <Wrench className="h-full w-full text-charcoal/70" />
@@ -28,6 +69,8 @@ export default function Home() {
         <Merchandise />
         <Insights />
         <About />
+        <ProcessTimeline />
+        <FAQ />
       </div>
 
       <ContactCTA />
@@ -41,7 +84,7 @@ export default function Home() {
             </p>
           </div>
           <p className="text-xs uppercase tracking-[0.2em]">
-            Premium workshop & consignment portfolio
+            Premium consignment portfolio
           </p>
         </div>
       </footer>

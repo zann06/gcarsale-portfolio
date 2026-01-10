@@ -6,6 +6,10 @@
   color-scheme: light;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-paper text-charcoal font-body antialiased;
   background-image: linear-gradient(

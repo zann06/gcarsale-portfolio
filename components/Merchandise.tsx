@@ -24,7 +24,7 @@ export default function Merchandise() {
   }, [size, color]);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
+    <section id="merch" className="mx-auto max-w-6xl px-6 py-20">
       <div className="grid gap-10 md:grid-cols-[1.1fr_1fr]">
         <motion.div
           initial="hidden"

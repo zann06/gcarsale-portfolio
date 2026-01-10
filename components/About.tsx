@@ -26,9 +26,9 @@ export default function About() {
           </h2>
 
           <p className="text-sm text-charcoal/70">
-            Gcarsale hadir sebagai bengkel dan brand consignment yang
-            memprioritaskan transparansi, detail inspeksi, dan storytelling visual
-            untuk setiap mobil premium.
+            Gcarsale hadir sebagai brand consignment yang memprioritaskan
+            transparansi, detail inspeksi, dan storytelling visual untuk setiap
+            mobil premium.
           </p>
 
           <p className="text-sm text-charcoal/70">
@@ -40,12 +40,25 @@ export default function About() {
             <p className="text-sm uppercase tracking-[0.2em] text-charcoal/50">
               Quote Owner
             </p>
+
             <p className="mt-3 text-lg font-semibold">
-              “Mobil bagus butuh bengkel yang serius. Kami memastikan setiap unit
-              tampil premium, aman, dan dipercaya buyer.”
+              “Mobil premium butuh proses yang serius. Kami pastikan setiap unit
+              tampil maksimal, aman, dan dipercaya buyer.”
             </p>
-            <div className="mt-6 inline-flex items-center rounded-full px-4 py-2 text-[10px] font-semibold uppercase text-charcoal/70 stamp">
-              Trusted Workshop
+
+            <div className="mt-4 grid gap-3 text-sm text-charcoal/70 md:grid-cols-3">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-charcoal/70" />
+                Transparan & detail
+              </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-charcoal/70" />
+                Dokumentasi rapi
+              </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-charcoal/70" />
+                Buyer terkurasi
+              </div>
             </div>
           </div>
         </motion.div>

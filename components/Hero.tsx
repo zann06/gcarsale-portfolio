@@ -4,7 +4,13 @@ import ImageWithFallback from '@/components/ImageWithFallback';
 import Parallax from '@/components/Parallax';
 import WorkshopDoodles from '@/components/WorkshopDoodles';
 import { motion, useReducedMotion } from 'framer-motion';
-import { BadgeCheck, Car, MessageCircle, ShieldCheck, Users } from 'lucide-react';
+import {
+  BadgeCheck,
+  Car,
+  MessageCircle,
+  ShieldCheck,
+  Users,
+} from 'lucide-react';
 import { siteConfig } from '@/data/site';
 import { createWhatsAppLink } from '@/lib/whatsapp';
 import { buttonHover, fadeUp, stagger } from '@/lib/motion';
@@ -15,15 +21,16 @@ export default function Hero() {
 
   const consultationLink = createWhatsAppLink(
     siteConfig.whatsappNumber,
-    'Halo Gcarsale, saya ingin konsultasi tentang layanan bengkel & consignment.'
+    'Halo Gcarsale, saya ingin konsultasi tentang layanan consignment.'
   );
+
   const consignLink = createWhatsAppLink(
     siteConfig.whatsappNumber,
     'Halo Gcarsale, saya ingin titip jual mobil premium saya.'
   );
 
   return (
-    <section className="relative overflow-hidden">
+    <section id="hero" className="relative overflow-hidden">
       <div className="absolute inset-0">
         {/* Background image parallax (disabled for reduced motion) */}
         {prefersReducedMotion ? (

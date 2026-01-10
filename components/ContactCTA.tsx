@@ -23,7 +23,10 @@ export default function ContactCTA() {
   );
 
   return (
-    <section className="relative overflow-hidden bg-charcoal px-6 py-20 text-white">
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-charcoal px-6 py-20 text-white"
+    >
       <div className="absolute inset-0 opacity-15">
         <div className="h-full w-full cta-grid-overlay" />
       </div>

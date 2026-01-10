@@ -13,7 +13,7 @@ export default function ConsignmentHighlight() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative mx-auto max-w-6xl px-6 py-20">
+    <section id="consignment" className="relative mx-auto max-w-6xl px-6 py-20">
       <Parallax speed={0.15} direction="up" rotate={-2}>
         <WorkshopDoodles className="pointer-events-none absolute inset-0 text-charcoal" />
       </Parallax>

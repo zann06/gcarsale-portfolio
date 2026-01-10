@@ -53,6 +53,7 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
       if (event.key === 'Tab') {
         const focusable = getFocusableElements(dialogRef.current);
         if (focusable.length === 0) return;
+
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
 
@@ -67,7 +68,10 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    getFocusableElements(dialogRef.current)[0]?.focus();
+
+    // focus first focusable element inside modal
+    const focusable = getFocusableElements(dialogRef.current);
+    focusable[0]?.focus();
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);

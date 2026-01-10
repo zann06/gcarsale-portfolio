@@ -28,11 +28,13 @@ export default function Insights() {
         setActive(null);
         return;
       }
+
       if (event.key === 'Tab') {
         const focusable = getFocusableElements(dialogRef.current);
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
         if (!first || !last) return;
+
         if (event.shiftKey && document.activeElement === first) {
           event.preventDefault();
           last.focus();
@@ -50,7 +52,7 @@ export default function Insights() {
   }, [active]);
 
   return (
-    <section className="relative mx-auto max-w-6xl px-6 py-20">
+    <section id="insights" className="relative mx-auto max-w-6xl px-6 py-20">
       <div className="pointer-events-none absolute inset-0 blueprint-grid opacity-10" />
 
       <div className="flex items-center justify-between gap-4">
@@ -105,9 +107,7 @@ export default function Insights() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={
-              prefersReducedMotion ? { duration: 0.2 } : { duration: 0.4 }
-            }
+            transition={prefersReducedMotion ? { duration: 0.2 } : { duration: 0.4 }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="insight-title"
