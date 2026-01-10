@@ -4,12 +4,14 @@ import ImageWithFallback from '@/components/ImageWithFallback';
 import Parallax from '@/components/Parallax';
 import WorkshopDoodles from '@/components/WorkshopDoodles';
 import { motion, useReducedMotion } from 'framer-motion';
+import { BadgeCheck, Car, MessageCircle, ShieldCheck, Users } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 import { createWhatsAppLink } from '@/lib/whatsapp';
 import { buttonHover, fadeUp, stagger } from '@/lib/motion';
 
 export default function Hero() {
   const prefersReducedMotion = useReducedMotion();
+  const statIcons = [Users, BadgeCheck, Car, ShieldCheck];
 
   const consultationLink = createWhatsAppLink(
     siteConfig.whatsappNumber,
@@ -90,22 +92,27 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4">
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-wrap items-center gap-4"
+          >
             <motion.a
               href={consultationLink}
               {...(!prefersReducedMotion ? buttonHover : {})}
-              className="rounded-full bg-whatsapp px-6 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:translate-y-[-2px] hover:shadow-xl"
+              className="group inline-flex items-center gap-2 rounded-full bg-whatsapp px-6 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:translate-y-[-2px] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
               aria-label="Konsultasi WhatsApp"
             >
+              <MessageCircle className="h-4 w-4 transition group-hover:rotate-6" />
               Konsultasi WhatsApp
             </motion.a>
 
             <motion.a
               href={consignLink}
               {...(!prefersReducedMotion ? buttonHover : {})}
-              className="rounded-full border border-white/50 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/10"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/50 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
               aria-label="Titip jual mobil"
             >
+              <Car className="h-4 w-4 transition group-hover:-rotate-6" />
               Titip Jual Mobil
             </motion.a>
           </motion.div>
@@ -117,14 +124,26 @@ export default function Hero() {
           variants={stagger(0.1)}
           className="grid grid-cols-2 gap-4 rounded-3xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm md:grid-cols-4"
         >
-          {siteConfig.stats.map((stat) => (
-            <motion.div variants={fadeUp} key={stat.label}>
-              <div className="text-2xl font-semibold">{stat.value}</div>
-              <div className="text-xs uppercase tracking-[0.2em] text-white/60">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
+          {siteConfig.stats.map((stat, index) => {
+            const Icon = statIcons[index] ?? ShieldCheck;
+            return (
+              <motion.div
+                variants={fadeUp}
+                key={stat.label}
+                className="flex items-center gap-3"
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5">
+                  <Icon className="h-4 w-4 text-white/70" />
+                </div>
+                <div>
+                  <div className="text-2xl font-semibold">{stat.value}</div>
+                  <div className="text-xs uppercase tracking-[0.2em] text-white/60">
+                    {stat.label}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

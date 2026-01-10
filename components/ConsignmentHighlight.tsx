@@ -4,6 +4,7 @@ import ImageWithFallback from '@/components/ImageWithFallback';
 import Parallax from '@/components/Parallax';
 import WorkshopDoodles from '@/components/WorkshopDoodles';
 import { motion, useReducedMotion } from 'framer-motion';
+import { BadgeCheck, Instagram } from 'lucide-react';
 import { consignmentUnits } from '@/data/consignment';
 import { siteConfig } from '@/data/site';
 import { cardHover, fadeUp, stagger, viewport } from '@/lib/motion';
@@ -19,7 +20,10 @@ export default function ConsignmentHighlight() {
 
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="section-heading">Consignment Highlight</p>
+          <p className="section-heading flex items-center gap-2">
+            <BadgeCheck className="h-4 w-4 text-charcoal/70" />
+            Consignment Highlight
+          </p>
           <h2 className="mt-2 text-3xl font-semibold uppercase">
             Unit Titipan Pilihan
           </h2>
@@ -70,8 +74,9 @@ export default function ConsignmentHighlight() {
       <div className="mt-6">
         <a
           href={siteConfig.instagramUrl}
-          className="inline-flex items-center gap-3 rounded-full border border-charcoal/30 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:bg-charcoal hover:text-white"
+          className="group inline-flex items-center gap-3 rounded-full border border-charcoal/30 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:bg-charcoal hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40"
         >
+          <Instagram className="h-4 w-4 transition group-hover:rotate-6" />
           Lihat unit lainnya di Instagram
         </a>
       </div>

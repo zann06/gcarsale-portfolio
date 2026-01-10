@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ImageWithFallback from '@/components/ImageWithFallback';
 import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowRight, Car } from 'lucide-react';
 import { featuredUnits, type FeaturedUnit } from '@/data/featuredUnits';
 import UnitModal from '@/components/UnitModal';
 import { cardHover, fadeUp, stagger, viewport } from '@/lib/motion';
@@ -17,7 +18,10 @@ export default function FeaturedUnits() {
 
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="section-heading">Featured Units</p>
+          <p className="section-heading flex items-center gap-2">
+            <Car className="h-4 w-4 text-charcoal/70" />
+            Featured Units
+          </p>
           <h2 className="mt-2 text-3xl font-semibold uppercase">
             Unit Pribadi Gcarsale
           </h2>
@@ -39,7 +43,7 @@ export default function FeaturedUnits() {
             type="button"
             onClick={() => setSelected(unit)}
             {...(!prefersReducedMotion ? cardHover : {})}
-            className="card-paper paper-texture group flex w-full flex-col overflow-hidden rounded-3xl text-left transition-transform md:hover:-rotate-1"
+            className="card-paper paper-texture group flex w-full flex-col overflow-hidden rounded-3xl text-left transition-transform md:hover:-rotate-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/30"
             aria-label={`Lihat detail ${unit.name}`}
           >
             <div className="relative h-48 w-full">
@@ -66,11 +70,13 @@ export default function FeaturedUnits() {
                 <h3 className="text-lg font-semibold">{unit.name}</h3>
                 <span className="text-sm text-charcoal/60">{unit.year}</span>
               </div>
+
               <p className="text-sm text-charcoal/70">{unit.price}</p>
 
               <div className="mt-auto flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-charcoal/50">
                 <span className="h-[1px] w-6 bg-charcoal/20" />
                 Detail
+                <ArrowRight className="h-3 w-3 transition group-hover:translate-x-1" />
               </div>
             </div>
           </motion.button>

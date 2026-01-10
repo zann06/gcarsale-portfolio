@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import ImageWithFallback from '@/components/ImageWithFallback';
 import { motion, useReducedMotion } from 'framer-motion';
+import { MessageCircle, Shirt } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 import { createWhatsAppLink } from '@/lib/whatsapp';
 import { buttonHover, fadeUp, viewport } from '@/lib/motion';
@@ -50,7 +51,10 @@ export default function Merchandise() {
           className="flex flex-col justify-center gap-6"
         >
           <div>
-            <p className="section-heading">Merchandise</p>
+            <p className="section-heading flex items-center gap-2">
+              <Shirt className="h-4 w-4 text-charcoal/70" />
+              Merchandise
+            </p>
             <h2 className="mt-2 text-3xl font-semibold uppercase">
               Gcarsale Workshirt
             </h2>
@@ -70,7 +74,7 @@ export default function Merchandise() {
                   <button
                     key={option}
                     onClick={() => setSize(option)}
-                    className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wide transition ${
+                    className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wide transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40 ${
                       size === option
                         ? 'border-charcoal bg-charcoal text-white'
                         : 'border-charcoal/30 text-charcoal'
@@ -92,7 +96,7 @@ export default function Merchandise() {
                   <button
                     key={option}
                     onClick={() => setColor(option)}
-                    className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wide transition ${
+                    className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wide transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40 ${
                       color === option
                         ? 'border-charcoal bg-charcoal text-white'
                         : 'border-charcoal/30 text-charcoal'
@@ -109,8 +113,9 @@ export default function Merchandise() {
           <motion.a
             href={link}
             {...(!prefersReducedMotion ? buttonHover : {})}
-            className="inline-flex w-fit items-center justify-center rounded-full bg-whatsapp px-6 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:translate-y-[-2px] hover:shadow-xl"
+            className="group inline-flex w-fit items-center justify-center gap-2 rounded-full bg-whatsapp px-6 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:translate-y-[-2px] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40"
           >
+            <MessageCircle className="h-4 w-4 transition group-hover:rotate-6" />
             Order via WhatsApp
           </motion.a>
         </motion.div>

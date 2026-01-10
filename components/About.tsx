@@ -2,6 +2,7 @@
 
 import ImageWithFallback from '@/components/ImageWithFallback';
 import { motion } from 'framer-motion';
+import { ShieldCheck } from 'lucide-react';
 import { fadeUp, viewport } from '@/lib/motion';
 
 export default function About() {
@@ -15,15 +16,21 @@ export default function About() {
           variants={fadeUp}
           className="space-y-4"
         >
-          <p className="section-heading">About Gcarsale</p>
+          <p className="section-heading flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-charcoal/70" />
+            About Gcarsale
+          </p>
+
           <h2 className="text-3xl font-semibold uppercase">
             Filosofi Consignment yang Transparan
           </h2>
+
           <p className="text-sm text-charcoal/70">
             Gcarsale hadir sebagai bengkel dan brand consignment yang
             memprioritaskan transparansi, detail inspeksi, dan storytelling visual
             untuk setiap mobil premium.
           </p>
+
           <p className="text-sm text-charcoal/70">
             Setiap unit diperlakukan seperti milik sendiri: dicek detail, diolah
             foto cinematic, dan dipasarkan dengan standar komunikasi tinggi.

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { MessageCircle } from 'lucide-react';
 import { createWhatsAppLink } from '@/lib/whatsapp';
 import { siteConfig } from '@/data/site';
 import { buttonHover } from '@/lib/motion';
@@ -43,7 +44,7 @@ export default function FloatingWhatsApp() {
               <a
                 key={item.label}
                 href={createWhatsAppLink(siteConfig.whatsappNumber, item.message)}
-                className="rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-charcoal/70 transition hover:bg-charcoal hover:text-white"
+                className="rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-charcoal/70 transition hover:bg-charcoal hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/30"
               >
                 {item.label}
               </a>
@@ -55,11 +56,11 @@ export default function FloatingWhatsApp() {
       <motion.button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-charcoal shadow-lg"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-charcoal shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
         aria-label="Buka menu WhatsApp"
         {...(!prefersReducedMotion ? buttonHover : {})}
       >
-        WA
+        <MessageCircle className="h-5 w-5" />
       </motion.button>
     </div>
   );

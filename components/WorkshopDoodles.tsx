@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
+import { Wrench, Bolt, Nut, Tape, Screwdriver, ShieldCheck } from 'lucide-react';
 
 const floatTransition = {
   duration: 18,
@@ -9,94 +10,61 @@ const floatTransition = {
   ease: 'easeInOut',
 };
 
+const doodleClass = 'absolute opacity-10 text-current [stroke-width:1.6px]';
+
 export default function WorkshopDoodles({ className }: { className?: string }) {
   const prefersReducedMotion = useReducedMotion();
+  const motionProps = prefersReducedMotion ? {} : { transition: floatTransition };
 
   return (
     <div className={className} aria-hidden="true">
-      <motion.svg
-        viewBox="0 0 120 120"
-        className="absolute left-[5%] top-[12%] h-14 w-14 opacity-10 md:h-20 md:w-20"
-        initial={false}
+      <motion.div
+        className={`${doodleClass} left-[5%] top-[12%] h-14 w-14 md:h-20 md:w-20`}
         animate={prefersReducedMotion ? {} : { rotate: 6 }}
-        transition={prefersReducedMotion ? undefined : floatTransition}
+        {...motionProps}
       >
-        <path
-          d="M30 20l20 20-30 30 10 10 30-30 20 20 10-10-20-20 20-20-10-10-20 20-20-20z"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="3"
-        />
-      </motion.svg>
+        <Wrench className="h-full w-full" />
+      </motion.div>
 
-      <motion.svg
-        viewBox="0 0 120 120"
-        className="absolute right-[8%] top-[18%] h-12 w-12 opacity-10 md:h-16 md:w-16"
+      <motion.div
+        className={`${doodleClass} right-[8%] top-[18%] h-12 w-12 md:h-16 md:w-16`}
         animate={prefersReducedMotion ? {} : { y: [0, -6, 0], rotate: -4 }}
-        transition={prefersReducedMotion ? undefined : floatTransition}
+        {...motionProps}
       >
-        <path
-          d="M20 60h60l20-20-10-10-30 30H20z"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="3"
-        />
-        <path d="M20 60v30h15V60" fill="none" stroke="currentColor" strokeWidth="3" />
-      </motion.svg>
+        <Screwdriver className="h-full w-full" />
+      </motion.div>
 
-      <motion.svg
-        viewBox="0 0 120 120"
-        className="absolute left-[12%] bottom-[10%] h-12 w-12 opacity-10 md:h-16 md:w-16"
+      <motion.div
+        className={`${doodleClass} left-[12%] bottom-[10%] h-12 w-12 md:h-16 md:w-16`}
         animate={prefersReducedMotion ? {} : { y: [0, 8, 0], rotate: 3 }}
-        transition={prefersReducedMotion ? undefined : floatTransition}
+        {...motionProps}
       >
-        <circle cx="60" cy="60" r="22" fill="none" stroke="currentColor" strokeWidth="3" />
-        <circle cx="60" cy="60" r="8" fill="none" stroke="currentColor" strokeWidth="3" />
-      </motion.svg>
+        <Nut className="h-full w-full" />
+      </motion.div>
 
-      <motion.svg
-        viewBox="0 0 120 120"
-        className="absolute right-[15%] bottom-[8%] h-10 w-10 opacity-10 md:h-14 md:w-14"
+      <motion.div
+        className={`${doodleClass} right-[15%] bottom-[8%] h-10 w-10 md:h-14 md:w-14`}
         animate={prefersReducedMotion ? {} : { y: [0, -4, 0], rotate: -6 }}
-        transition={prefersReducedMotion ? undefined : floatTransition}
+        {...motionProps}
       >
-        <path
-          d="M60 20l10 20 20 10-20 10-10 20-10-20-20-10 20-10z"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="3"
-        />
-      </motion.svg>
+        <Bolt className="h-full w-full" />
+      </motion.div>
 
-      <motion.svg
-        viewBox="0 0 120 120"
-        className="absolute left-[40%] top-[6%] h-10 w-10 opacity-10 md:h-14 md:w-14"
+      <motion.div
+        className={`${doodleClass} left-[40%] top-[6%] h-10 w-10 md:h-14 md:w-14`}
         animate={prefersReducedMotion ? {} : { y: [0, 6, 0], rotate: 4 }}
-        transition={prefersReducedMotion ? undefined : floatTransition}
+        {...motionProps}
       >
-        <path
-          d="M30 30h60v10H30zM30 80h60v10H30z"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="3"
-        />
-        <path d="M40 40v30M80 40v30" fill="none" stroke="currentColor" strokeWidth="3" />
-      </motion.svg>
+        <Tape className="h-full w-full" />
+      </motion.div>
 
-      <motion.svg
-        viewBox="0 0 120 120"
-        className="absolute right-[35%] bottom-[18%] hidden h-12 w-12 opacity-10 md:block"
+      <motion.div
+        className={`${doodleClass} right-[35%] bottom-[18%] hidden h-12 w-12 md:block`}
         animate={prefersReducedMotion ? {} : { y: [0, -5, 0], rotate: -3 }}
-        transition={prefersReducedMotion ? undefined : floatTransition}
+        {...motionProps}
       >
-        <path
-          d="M20 40h80v40H20z"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="3"
-        />
-        <path d="M30 40l10-10h40l10 10" fill="none" stroke="currentColor" strokeWidth="3" />
-      </motion.svg>
+        <ShieldCheck className="h-full w-full" />
+      </motion.div>
     </div>
   );
 }

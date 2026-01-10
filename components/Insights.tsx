@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { ArrowRight, Sparkles, X } from 'lucide-react';
 import { insights, type Insight } from '@/data/insights';
 import { cardHover, fadeUp, stagger, viewport } from '@/lib/motion';
 
@@ -54,7 +55,10 @@ export default function Insights() {
 
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="section-heading">Gcarsale Insight</p>
+          <p className="section-heading flex items-center gap-2">
+            <Sparkles className="h-4 w-4 text-charcoal/70" />
+            Gcarsale Insight
+          </p>
           <h2 className="mt-2 text-3xl font-semibold uppercase">
             Insight Otomotif
           </h2>
@@ -74,20 +78,21 @@ export default function Insights() {
             key={item.id}
             variants={fadeUp}
             {...(!prefersReducedMotion ? cardHover : {})}
-            className="card-paper paper-texture flex h-full flex-col rounded-3xl p-6 transition-transform md:hover:-rotate-1"
+            className="card-paper paper-texture group flex h-full flex-col rounded-3xl p-6 transition-transform md:hover:-rotate-1"
           >
             <p className="text-xs uppercase tracking-[0.2em] text-charcoal/60">
               {item.date}
             </p>
             <h3 className="mt-3 text-lg font-semibold">{item.title}</h3>
             <p className="mt-2 text-sm text-charcoal/70">{item.excerpt}</p>
+
             <button
               onClick={() => setActive(item)}
-              className="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-charcoal/60"
+              className="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-charcoal/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/30"
               type="button"
             >
               Baca detail
-              <span className="h-[1px] w-6 bg-charcoal/20" />
+              <ArrowRight className="h-3 w-3 transition group-hover:translate-x-1" />
             </button>
           </motion.article>
         ))}
@@ -100,7 +105,9 @@ export default function Insights() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={prefersReducedMotion ? { duration: 0.2 } : { duration: 0.4 }}
+            transition={
+              prefersReducedMotion ? { duration: 0.2 } : { duration: 0.4 }
+            }
             role="dialog"
             aria-modal="true"
             aria-labelledby="insight-title"
@@ -121,10 +128,11 @@ export default function Insights() {
                 <p className="section-heading">Insight</p>
                 <button
                   onClick={() => setActive(null)}
-                  className="rounded-full border border-charcoal/20 px-3 py-1 text-xs uppercase"
+                  className="inline-flex items-center gap-2 rounded-full border border-charcoal/20 px-3 py-1 text-xs uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40"
                   type="button"
                   aria-label="Tutup modal"
                 >
+                  <X className="h-3 w-3" />
                   Close
                 </button>
               </div>

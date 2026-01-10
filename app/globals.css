@@ -44,7 +44,7 @@ body {
   @apply font-headline uppercase text-4xl md:text-6xl tracking-tight;
 }
 
-/* Workshop / sketch styling helpers (from Codex) */
+/* Workshop / sketch styling helpers */
 .paper-texture {
   background-image: radial-gradient(
       circle at 20% 20%,
@@ -96,7 +96,6 @@ body {
     linear-gradient(90deg, transparent 60px, rgba(255, 255, 255, 0.2) 61px);
   background-size: 70px 70px;
 }
-
 
 .grease-smudge {
   background: radial-gradient(circle, rgba(15, 17, 21, 0.12), transparent 65%);

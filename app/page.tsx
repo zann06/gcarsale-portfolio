@@ -6,41 +6,32 @@ import Insights from '@/components/Insights';
 import About from '@/components/About';
 import ContactCTA from '@/components/ContactCTA';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import { Bolt, Wrench } from 'lucide-react';
 
 export default function Home() {
   return (
     <main className="relative">
       <Hero />
+
       <div className="relative">
         <div className="pointer-events-none absolute inset-0 hidden md:block">
           <div className="absolute left-8 top-10 h-24 w-24 opacity-20">
-            <svg viewBox="0 0 120 120" className="h-full w-full">
-              <path
-                d="M10 60h100M30 20l60 80M20 90l80-60"
-                stroke="#1a1d24"
-                strokeWidth="2"
-                fill="none"
-              />
-            </svg>
+            <Wrench className="h-full w-full text-charcoal/70" />
           </div>
           <div className="absolute right-10 top-24 h-20 w-20 opacity-15">
-            <svg viewBox="0 0 120 120" className="h-full w-full">
-              <path
-                d="M20 20h80v80H20zM20 60h80"
-                stroke="#1a1d24"
-                strokeWidth="2"
-                fill="none"
-              />
-            </svg>
+            <Bolt className="h-full w-full text-charcoal/70" />
           </div>
         </div>
+
         <FeaturedUnits />
         <ConsignmentHighlight />
         <Merchandise />
         <Insights />
         <About />
       </div>
+
       <ContactCTA />
+
       <footer className="bg-charcoal px-6 py-10 text-white/70">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div className="flex items-center gap-3">
@@ -54,6 +45,7 @@ export default function Home() {
           </p>
         </div>
       </footer>
+
       <FloatingWhatsApp />
     </main>
   );

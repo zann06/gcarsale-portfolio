@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef } from 'react';
 import ImageWithFallback from '@/components/ImageWithFallback';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { BadgeCheck, MessageCircle, X } from 'lucide-react';
 import { FeaturedUnit } from '@/data/featuredUnits';
 import { siteConfig } from '@/data/site';
 import { createWhatsAppLink } from '@/lib/whatsapp';
@@ -66,8 +67,7 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    const focusable = getFocusableElements(dialogRef.current);
-    focusable[0]?.focus();
+    getFocusableElements(dialogRef.current)[0]?.focus();
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
@@ -104,10 +104,11 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
           >
             <button
               onClick={onClose}
-              className="absolute right-4 top-4 rounded-full border border-charcoal/20 px-3 py-1 text-xs uppercase"
-              aria-label="Tutup modal"
               type="button"
+              className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full border border-charcoal/20 px-3 py-1 text-xs uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40"
+              aria-label="Tutup modal"
             >
+              <X className="h-3 w-3" />
               Close
             </button>
 
@@ -135,7 +136,7 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
               <ul className="grid gap-2 text-sm text-charcoal/80">
                 {unit.highlights.map((highlight) => (
                   <li key={highlight} className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-whatsapp" />
+                    <BadgeCheck className="h-4 w-4 text-whatsapp" />
                     {highlight}
                   </li>
                 ))}
@@ -147,8 +148,9 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
                 {unit.status === 'AVAILABLE' ? (
                   <a
                     href={whatsappLink}
-                    className="rounded-full bg-whatsapp px-6 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal"
+                    className="group inline-flex items-center gap-2 rounded-full bg-whatsapp px-6 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40"
                   >
+                    <MessageCircle className="h-4 w-4 transition group-hover:rotate-6" />
                     WhatsApp – Tanya Unit Ini
                   </a>
                 ) : (
@@ -159,8 +161,8 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
 
                 <button
                   onClick={onClose}
-                  className="rounded-full border border-charcoal/20 px-6 py-3 text-sm font-semibold uppercase"
                   type="button"
+                  className="rounded-full border border-charcoal/20 px-6 py-3 text-sm font-semibold uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40"
                 >
                   Tutup
                 </button>
