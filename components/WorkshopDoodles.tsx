@@ -1,14 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import {
-  Wrench,
-  Bolt,
-  Nut,
-  Tape,
-  Screwdriver,
-  ShieldCheck,
-} from 'lucide-react';
+import { Wrench, Bolt, Nut, Tape, Screwdriver, ShieldCheck } from 'lucide-react';
 
 const floatTransition = {
   duration: 18,
@@ -17,14 +10,11 @@ const floatTransition = {
   ease: 'easeInOut',
 };
 
-const doodleClass =
-  'absolute opacity-10 text-current [stroke-width:1.6px]';
+const doodleClass = 'absolute opacity-10 text-current [stroke-width:1.6px]';
 
 export default function WorkshopDoodles({ className }: { className?: string }) {
   const prefersReducedMotion = useReducedMotion();
-  const motionProps = prefersReducedMotion
-    ? {}
-    : { transition: floatTransition };
+  const motionProps = prefersReducedMotion ? {} : { transition: floatTransition };
 
   return (
     <div className={className} aria-hidden="true">

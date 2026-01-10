@@ -9,11 +9,12 @@ import ProcessTimeline from '@/components/ProcessTimeline';
 import FAQ from '@/components/FAQ';
 import ContactCTA from '@/components/ContactCTA';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+
 import { Bolt, Wrench } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 
 export default function Home() {
-  const jsonLd = {
+  const businessLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: siteConfig.name,
@@ -42,15 +43,18 @@ export default function Home() {
     <main className="relative">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(businessLd) }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
       />
+
       <Hero />
       <ServicesSnapshot />
+
       <div className="relative">
+        {/* Decorative icons */}
         <div className="pointer-events-none absolute inset-0 hidden md:block">
           <div className="absolute left-8 top-10 h-24 w-24 opacity-20">
             <Wrench className="h-full w-full text-charcoal/70" />
@@ -59,6 +63,7 @@ export default function Home() {
             <Bolt className="h-full w-full text-charcoal/70" />
           </div>
         </div>
+
         <FeaturedUnits />
         <ConsignmentHighlight />
         <Merchandise />
@@ -67,7 +72,9 @@ export default function Home() {
         <ProcessTimeline />
         <FAQ />
       </div>
+
       <ContactCTA />
+
       <footer className="bg-charcoal px-6 py-10 text-white/70">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div className="flex items-center gap-3">
@@ -77,10 +84,11 @@ export default function Home() {
             </p>
           </div>
           <p className="text-xs uppercase tracking-[0.2em]">
-            Premium workshop & consignment portfolio
+            Premium consignment portfolio
           </p>
         </div>
       </footer>
+
       <FloatingWhatsApp />
     </main>
   );
