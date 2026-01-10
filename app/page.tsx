@@ -12,6 +12,7 @@ export default function Home() {
   return (
     <main className="relative">
       <Hero />
+
       <div className="relative">
         <div className="pointer-events-none absolute inset-0 hidden md:block">
           <div className="absolute left-8 top-10 h-24 w-24 opacity-20">
@@ -21,13 +22,16 @@ export default function Home() {
             <Bolt className="h-full w-full text-charcoal/70" />
           </div>
         </div>
+
         <FeaturedUnits />
         <ConsignmentHighlight />
         <Merchandise />
         <Insights />
         <About />
       </div>
+
       <ContactCTA />
+
       <footer className="bg-charcoal px-6 py-10 text-white/70">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div className="flex items-center gap-3">
@@ -41,6 +45,7 @@ export default function Home() {
           </p>
         </div>
       </footer>
+
       <FloatingWhatsApp />
     </main>
   );

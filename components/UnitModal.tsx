@@ -67,8 +67,7 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    const focusable = getFocusableElements(dialogRef.current);
-    focusable[0]?.focus();
+    getFocusableElements(dialogRef.current)[0]?.focus();
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
@@ -105,12 +104,14 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
           >
             <button
               onClick={onClose}
+              type="button"
               className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full border border-charcoal/20 px-3 py-1 text-xs uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40"
               aria-label="Tutup modal"
             >
               <X className="h-3 w-3" />
               Close
             </button>
+
             <div className="relative h-64 w-full">
               <ImageWithFallback
                 src={unit.image}
@@ -120,6 +121,7 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
                 sizes="100vw"
               />
             </div>
+
             <div className="space-y-4 p-6">
               <div>
                 <p className="section-heading">Detail Unit</p>
@@ -130,6 +132,7 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
                   {unit.year} • {unit.price}
                 </p>
               </div>
+
               <ul className="grid gap-2 text-sm text-charcoal/80">
                 {unit.highlights.map((highlight) => (
                   <li key={highlight} className="flex items-center gap-2">
@@ -138,7 +141,9 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
                   </li>
                 ))}
               </ul>
+
               <p className="text-sm text-charcoal/70">{unit.description}</p>
+
               <div className="flex flex-wrap gap-3">
                 {unit.status === 'AVAILABLE' ? (
                   <a
@@ -153,8 +158,10 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
                     Unit Sold
                   </span>
                 )}
+
                 <button
                   onClick={onClose}
+                  type="button"
                   className="rounded-full border border-charcoal/20 px-6 py-3 text-sm font-semibold uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40"
                 >
                   Tutup

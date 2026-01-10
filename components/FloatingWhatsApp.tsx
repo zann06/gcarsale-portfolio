@@ -52,6 +52,7 @@ export default function FloatingWhatsApp() {
           </motion.div>
         ) : null}
       </AnimatePresence>
+
       <motion.button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
