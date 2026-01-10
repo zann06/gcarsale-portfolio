@@ -51,6 +51,7 @@ export default function Insights() {
   return (
     <section className="relative mx-auto max-w-6xl px-6 py-20">
       <div className="pointer-events-none absolute inset-0 blueprint-grid opacity-10" />
+
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="section-heading">Gcarsale Insight</p>
@@ -127,6 +128,7 @@ export default function Insights() {
                   Close
                 </button>
               </div>
+
               <h3 id="insight-title" className="mt-4 text-2xl font-semibold">
                 {active.title}
               </h3>

@@ -28,6 +28,7 @@ export default function About() {
             Setiap unit diperlakukan seperti milik sendiri: dicek detail, diolah
             foto cinematic, dan dipasarkan dengan standar komunikasi tinggi.
           </p>
+
           <div className="card-paper paper-texture rounded-3xl p-6">
             <p className="text-sm uppercase tracking-[0.2em] text-charcoal/50">
               Quote Owner
@@ -41,6 +42,7 @@ export default function About() {
             </div>
           </div>
         </motion.div>
+
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -52,6 +54,7 @@ export default function About() {
             <span className="h-6 w-6 rounded-full border border-charcoal/30" />
             Gcarsale
           </div>
+
           <div className="relative h-72 w-full overflow-hidden rounded-3xl">
             <ImageWithFallback
               src="/owner.jpg"
@@ -61,6 +64,7 @@ export default function About() {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
+
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-full border border-charcoal/20" />
             <div>

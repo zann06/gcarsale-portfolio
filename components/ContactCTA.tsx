@@ -7,6 +7,7 @@ import { buttonHover, fadeUp, viewport } from '@/lib/motion';
 
 export default function ContactCTA() {
   const prefersReducedMotion = useReducedMotion();
+
   const consultation = createWhatsAppLink(
     siteConfig.whatsappNumber,
     'Halo Gcarsale, saya ingin konsultasi tentang layanan consignment.'
@@ -22,10 +23,14 @@ export default function ContactCTA() {
 
   return (
     <section className="relative overflow-hidden bg-charcoal px-6 py-20 text-white">
+      {/* Blueprint / sketch grid background */}
       <div className="absolute inset-0 opacity-15">
         <div className="h-full w-full cta-grid-overlay" />
       </div>
+
+      {/* Grease smudge accent */}
       <div className="pointer-events-none absolute left-10 top-10 h-40 w-40 grease-smudge" />
+
       <div className="relative mx-auto max-w-6xl">
         <motion.div
           initial="hidden"
@@ -35,7 +40,7 @@ export default function ContactCTA() {
           className="grid gap-8 md:grid-cols-[1.2fr_1fr]"
         >
           <div>
-            <p className="section-heading text-white/60">Contact & CTA</p>
+            <p className="section-heading text-white/60">Contact &amp; CTA</p>
             <h2 className="mt-3 text-4xl font-semibold uppercase">
               Siap bikin mobil Anda tampil premium?
             </h2>
@@ -43,6 +48,7 @@ export default function ContactCTA() {
               Konsultasi gratis, cek proses consignment, dan dapatkan paket
               detailing sesuai kebutuhan.
             </p>
+
             <div className="mt-6 flex flex-wrap gap-3">
               <motion.a
                 href={consultation}
@@ -51,6 +57,7 @@ export default function ContactCTA() {
               >
                 Konsultasi WhatsApp
               </motion.a>
+
               <motion.a
                 href={consign}
                 {...(!prefersReducedMotion ? buttonHover : {})}
@@ -58,6 +65,7 @@ export default function ContactCTA() {
               >
                 Titip Jual Mobil
               </motion.a>
+
               <motion.a
                 href={askUnit}
                 {...(!prefersReducedMotion ? buttonHover : {})}
@@ -67,6 +75,7 @@ export default function ContactCTA() {
               </motion.a>
             </div>
           </div>
+
           <div className="space-y-4 text-sm text-white/70">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-white/50">

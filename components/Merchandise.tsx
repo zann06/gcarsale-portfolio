@@ -41,6 +41,7 @@ export default function Merchandise() {
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </motion.div>
+
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -81,6 +82,7 @@ export default function Merchandise() {
                 ))}
               </div>
             </div>
+
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-charcoal/60">
                 Warna

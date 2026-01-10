@@ -10,6 +10,7 @@ import { buttonHover, fadeUp, stagger } from '@/lib/motion';
 
 export default function Hero() {
   const prefersReducedMotion = useReducedMotion();
+
   const consultationLink = createWhatsAppLink(
     siteConfig.whatsappNumber,
     'Halo Gcarsale, saya ingin konsultasi tentang layanan bengkel & consignment.'
@@ -22,7 +23,8 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <Parallax speed={0.4} direction="down" className="absolute inset-0">
+        {/* Background image parallax (disabled for reduced motion) */}
+        {prefersReducedMotion ? (
           <ImageWithFallback
             src="/hero.jpg"
             alt="Cinematic premium car"
@@ -31,14 +33,38 @@ export default function Hero() {
             priority
             sizes="100vw"
           />
-        </Parallax>
+        ) : (
+          <Parallax speed={0.4} direction="down" className="absolute inset-0">
+            <ImageWithFallback
+              src="/hero.jpg"
+              alt="Cinematic premium car"
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+            />
+          </Parallax>
+        )}
+
         <div className="absolute inset-0 bg-charcoal/70" />
-        <Parallax speed={0.2} direction="up" className="absolute inset-0">
+
+        {/* Sketch grid overlay parallax (disabled for reduced motion) */}
+        {prefersReducedMotion ? (
           <div className="absolute inset-0 hero-grid-overlay opacity-60" />
-        </Parallax>
-        <Parallax speed={0.25} direction="down" rotate={1.5}>
-          <WorkshopDoodles className="absolute inset-0 text-white" />
-        </Parallax>
+        ) : (
+          <Parallax speed={0.2} direction="up" className="absolute inset-0">
+            <div className="absolute inset-0 hero-grid-overlay opacity-60" />
+          </Parallax>
+        )}
+
+        {/* Workshop doodles parallax (disabled for reduced motion) */}
+        {!prefersReducedMotion ? (
+          <Parallax speed={0.25} direction="down" rotate={1.5}>
+            <WorkshopDoodles className="absolute inset-0 text-white" />
+          </Parallax>
+        ) : (
+          <WorkshopDoodles className="absolute inset-0 text-white opacity-50" />
+        )}
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-6xl flex-col gap-10 px-6 pb-16 pt-10 text-white">
@@ -64,10 +90,7 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-wrap items-center gap-4"
-          >
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4">
             <motion.a
               href={consultationLink}
               {...(!prefersReducedMotion ? buttonHover : {})}
@@ -76,6 +99,7 @@ export default function Hero() {
             >
               Konsultasi WhatsApp
             </motion.a>
+
             <motion.a
               href={consignLink}
               {...(!prefersReducedMotion ? buttonHover : {})}
