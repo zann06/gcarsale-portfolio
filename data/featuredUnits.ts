@@ -19,7 +19,7 @@ export const featuredUnits: FeaturedUnit[] = [
     image: '/units/unit-1.jpg',
     highlights: ['Full service record', 'Miles rendah', 'Interior immaculate'],
     description:
-      'Unit flagship dengan perawatan detail premium, siap inspeksi penuh dan test drive terjadwal.',
+      'Unit flagship dengan perawatan detail premium, siap inspeksi menyeluruh dan test drive terjadwal.',
   },
   {
     id: 'bmw-m4',
@@ -30,7 +30,7 @@ export const featuredUnits: FeaturedUnit[] = [
     image: '/units/unit-2.jpg',
     highlights: ['Track-ready', 'Carbon package', 'Detailing premium'],
     description:
-      'Mobil performa tinggi dengan catatan servis lengkap dan QC ketat dari tim Gcarsale.',
+      'Mobil performa tinggi dengan catatan servis lengkap dan proses QC ketat sebelum dipasarkan.',
   },
   {
     id: 'porsche-macan',
@@ -41,6 +41,6 @@ export const featuredUnits: FeaturedUnit[] = [
     image: '/units/unit-3.jpg',
     highlights: ['Adaptive suspension', 'Interior suede', 'Full coating'],
     description:
-      'SUV premium dengan detail interior premium dan inspeksi menyeluruh berlapis.',
+      'SUV premium dengan kondisi interior terjaga dan inspeksi menyeluruh sebelum listing.',
   },
 ];

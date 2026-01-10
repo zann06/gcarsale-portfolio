@@ -5,7 +5,7 @@ export const siteConfig = {
   meta: {
     title: 'Gcarsale | Premium Automotive Consignment Portfolio',
     description:
-      'Gcarsale adalah brand consignment mobil premium dengan pelayanan detail, transparan, dan seleksi unit terbaik.',
+      'Gcarsale adalah brand consignment mobil premium dengan proses transparan, inspeksi detail, dan seleksi unit terbaik.',
   },
   stats: [
     { label: 'Followers', value: '48K+' },
@@ -16,7 +16,7 @@ export const siteConfig = {
   hero: {
     headline: 'YOUR RIDE, YOUR STYLE',
     subheadline:
-      'Curated, trustworthy, dan detail premium untuk mobil konsinyasi Anda.',
+      'Curated, trustworthy, dan detail premium untuk consignment mobil Anda.',
   },
   contact: {
     address: 'Jakarta Selatan, Indonesia',

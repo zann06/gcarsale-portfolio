@@ -17,6 +17,7 @@ export default function ConsignmentHighlight() {
       <Parallax speed={0.15} direction="up" rotate={-2}>
         <WorkshopDoodles className="pointer-events-none absolute inset-0 text-charcoal" />
       </Parallax>
+
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="section-heading flex items-center gap-2">
@@ -42,7 +43,7 @@ export default function ConsignmentHighlight() {
             key={unit.id}
             variants={fadeUp}
             {...(!prefersReducedMotion ? cardHover : {})}
-            className="card-paper paper-texture min-w-[240px] flex-1 snap-start rounded-3xl p-4 transition-transform md:hover:-rotate-1 md:min-w-0"
+            className="card-paper paper-texture min-w-[240px] flex-1 snap-start rounded-3xl p-4 transition-transform md:min-w-0 md:hover:-rotate-1"
           >
             <div className="relative h-40 w-full">
               <ImageWithFallback
@@ -53,6 +54,7 @@ export default function ConsignmentHighlight() {
                 sizes="(max-width: 768px) 70vw, 33vw"
               />
             </div>
+
             <div className="mt-4">
               <h3 className="text-lg font-semibold">{unit.name}</h3>
               <p className="text-sm text-charcoal/60">

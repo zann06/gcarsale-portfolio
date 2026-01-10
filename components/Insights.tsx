@@ -28,11 +28,13 @@ export default function Insights() {
         setActive(null);
         return;
       }
+
       if (event.key === 'Tab') {
         const focusable = getFocusableElements(dialogRef.current);
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
         if (!first || !last) return;
+
         if (event.shiftKey && document.activeElement === first) {
           event.preventDefault();
           last.focus();
@@ -52,6 +54,7 @@ export default function Insights() {
   return (
     <section id="insights" className="relative mx-auto max-w-6xl px-6 py-20">
       <div className="pointer-events-none absolute inset-0 blueprint-grid opacity-10" />
+
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="section-heading flex items-center gap-2">
@@ -84,6 +87,7 @@ export default function Insights() {
             </p>
             <h3 className="mt-3 text-lg font-semibold">{item.title}</h3>
             <p className="mt-2 text-sm text-charcoal/70">{item.excerpt}</p>
+
             <button
               onClick={() => setActive(item)}
               className="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-charcoal/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/30"
@@ -132,6 +136,7 @@ export default function Insights() {
                   Close
                 </button>
               </div>
+
               <h3 id="insight-title" className="mt-4 text-2xl font-semibold">
                 {active.title}
               </h3>

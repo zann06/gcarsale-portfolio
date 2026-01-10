@@ -34,7 +34,7 @@ export default function FloatingWhatsApp() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       <AnimatePresence>
-        {open ? (
+        {open && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,15 +44,19 @@ export default function FloatingWhatsApp() {
             {menuItems.map((item) => (
               <a
                 key={item.label}
-                href={createWhatsAppLink(siteConfig.whatsappNumber, item.message)}
+                href={createWhatsAppLink(
+                  siteConfig.whatsappNumber,
+                  item.message
+                )}
                 className="rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-charcoal/70 transition hover:bg-charcoal hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/30"
               >
                 {item.label}
               </a>
             ))}
           </motion.div>
-        ) : null}
+        )}
       </AnimatePresence>
+
       <motion.button
         type="button"
         onClick={() => setOpen((prev) => !prev)}

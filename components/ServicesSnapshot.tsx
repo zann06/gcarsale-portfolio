@@ -9,17 +9,17 @@ import { buttonHover, cardHover, fadeUp, stagger, viewport } from '@/lib/motion'
 const services = [
   {
     title: 'Consignment Premium',
-    description: 'Titip jual end-to-end, handling buyer, hingga closing aman.',
+    description: 'Titip jual end-to-end: handling buyer, nego, sampai closing aman.',
     icon: Car,
   },
   {
     title: 'Inspeksi & Transparansi',
-    description: 'Checklist jelas, dokumentasi lengkap, highlight kondisi unit.',
+    description: 'Checklist jelas, dokumentasi rapi, highlight kondisi unit apa adanya.',
     icon: ShieldCheck,
   },
   {
     title: 'Foto Cinematic & Storytelling',
-    description: 'Foto, reels, dan copy listing premium yang buyer-ready.',
+    description: 'Konten premium (foto/reels/copy) biar unit buyer-ready dan menarik.',
     icon: Camera,
   },
   {
@@ -27,23 +27,31 @@ const services = [
     description: 'Distribusi IG/WA, buyer terkurasi, dan filtering ketat.',
     icon: Users,
   },
+  {
+    title: 'Dokumen & Proses Aman',
+    description: 'Bantu flow transaksi dan dokumen supaya rapi & minim drama.',
+    icon: Wrench,
+  },
 ];
 
 export default function ServicesSnapshot() {
   const prefersReducedMotion = useReducedMotion();
+
   const consignLink = createWhatsAppLink(
     siteConfig.whatsappNumber,
-    'Halo Gcarsale, saya ingin titip jual mobil premium saya. Bisa dibantu prosesnya?'
+    'Halo Gcarsale, saya ingin titip jual mobil (consignment). Bisa jelaskan proses & estimasinya?'
   );
+
   const consultLink = createWhatsAppLink(
     siteConfig.whatsappNumber,
-    'Halo Gcarsale, saya ingin konsultasi tentang consignment mobil premium.'
+    'Halo Gcarsale, saya ingin konsultasi dulu soal consignment mobil premium.'
   );
 
   return (
     <section id="services" className="relative mx-auto max-w-6xl px-6 py-20">
       <div className="pointer-events-none absolute inset-0 blueprint-grid opacity-10" />
       <div className="pointer-events-none absolute right-10 top-6 h-24 w-24 grease-smudge opacity-60" />
+
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="section-heading flex items-center gap-2">
@@ -51,7 +59,7 @@ export default function ServicesSnapshot() {
             Consignment Snapshot
           </p>
           <h2 className="mt-2 text-3xl font-semibold uppercase">
-            Snapshot Consignment Premium
+            Proses yang Rapi. Unit Jadi Buyer-Ready.
           </h2>
         </div>
         <div className="hidden h-[1px] flex-1 bg-charcoal/10 md:block" />
@@ -61,8 +69,8 @@ export default function ServicesSnapshot() {
         initial="hidden"
         whileInView="show"
         viewport={viewport}
-        variants={stagger(0.1)}
-        className="mt-8 grid gap-4 md:grid-cols-2"
+        variants={stagger(0.08)}
+        className="mt-8 grid gap-4 md:grid-cols-3"
       >
         {services.map((service) => {
           const Icon = service.icon;
@@ -104,6 +112,7 @@ export default function ServicesSnapshot() {
         >
           Titip Jual via WhatsApp
         </motion.a>
+
         <motion.a
           href={consultLink}
           {...(!prefersReducedMotion ? buttonHover : {})}

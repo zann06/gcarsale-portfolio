@@ -8,6 +8,7 @@ import { buttonHover, fadeUp, viewport } from '@/lib/motion';
 
 export default function ContactCTA() {
   const prefersReducedMotion = useReducedMotion();
+
   const consultation = createWhatsAppLink(
     siteConfig.whatsappNumber,
     'Halo Gcarsale, saya ingin konsultasi tentang layanan consignment.'
@@ -22,11 +23,16 @@ export default function ContactCTA() {
   );
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-charcoal px-6 py-20 text-white">
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-charcoal px-6 py-20 text-white"
+    >
       <div className="absolute inset-0 opacity-15">
         <div className="h-full w-full cta-grid-overlay" />
       </div>
+
       <div className="pointer-events-none absolute left-10 top-10 h-40 w-40 grease-smudge" />
+
       <div className="relative mx-auto max-w-6xl">
         <motion.div
           initial="hidden"
@@ -38,15 +44,18 @@ export default function ContactCTA() {
           <div>
             <p className="section-heading flex items-center gap-2 text-white/60">
               <Wrench className="h-4 w-4 text-white/60" />
-              Contact & CTA
+              Contact &amp; CTA
             </p>
+
             <h2 className="mt-3 text-4xl font-semibold uppercase">
               Siap bikin mobil Anda tampil premium?
             </h2>
+
             <p className="mt-4 text-sm text-white/70">
               Konsultasi gratis, cek proses consignment, dan dapatkan paket
               detailing sesuai kebutuhan.
             </p>
+
             <div className="mt-6 flex flex-wrap gap-3">
               <motion.a
                 href={consultation}
@@ -56,6 +65,7 @@ export default function ContactCTA() {
                 <MessageCircle className="h-4 w-4 transition group-hover:rotate-6" />
                 Konsultasi WhatsApp
               </motion.a>
+
               <motion.a
                 href={consign}
                 {...(!prefersReducedMotion ? buttonHover : {})}
@@ -64,6 +74,7 @@ export default function ContactCTA() {
                 <Car className="h-4 w-4 transition group-hover:-rotate-6" />
                 Titip Jual Mobil
               </motion.a>
+
               <motion.a
                 href={askUnit}
                 {...(!prefersReducedMotion ? buttonHover : {})}
@@ -74,6 +85,7 @@ export default function ContactCTA() {
               </motion.a>
             </div>
           </div>
+
           <div className="space-y-4 text-sm text-white/70">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-white/50">
@@ -81,12 +93,14 @@ export default function ContactCTA() {
               </p>
               <p>{siteConfig.contact.address}</p>
             </div>
+
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-white/50">
                 Operating Hours
               </p>
               <p>{siteConfig.contact.hours}</p>
             </div>
+
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-white/50">
                 WhatsApp

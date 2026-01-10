@@ -48,6 +48,7 @@ body {
   @apply font-headline uppercase text-4xl md:text-6xl tracking-tight;
 }
 
+/* Workshop / sketch styling helpers */
 .paper-texture {
   background-image: radial-gradient(
       circle at 20% 20%,
@@ -111,6 +112,7 @@ body {
   letter-spacing: 0.2em;
 }
 
+/* Keep existing subtle grid helper */
 .subtle-grid {
   background-image: linear-gradient(
       transparent 31px,
