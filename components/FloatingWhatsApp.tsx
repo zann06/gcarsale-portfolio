@@ -10,11 +10,12 @@ import { buttonHover } from '@/lib/motion';
 const menuItems = [
   {
     label: 'Konsultasi',
-    message: 'Halo Gcarsale, saya ingin konsultasi tentang layanan consignment.',
+    message: 'Halo Gcarsale, saya ingin konsultasi titip jual (consignment) mobil.',
   },
   {
     label: 'Titip jual mobil',
-    message: 'Halo Gcarsale, saya ingin titip jual mobil saya.',
+    message:
+      'Halo Gcarsale, saya ingin titip jual mobil saya. Bisa jelaskan proses & estimasinya?',
   },
   {
     label: 'Tanya unit',
@@ -43,7 +44,10 @@ export default function FloatingWhatsApp() {
             {menuItems.map((item) => (
               <a
                 key={item.label}
-                href={createWhatsAppLink(siteConfig.whatsappNumber, item.message)}
+                href={createWhatsAppLink(
+                  siteConfig.whatsappNumber,
+                  item.message
+                )}
                 className="rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-charcoal/70 transition hover:bg-charcoal hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/30"
               >
                 {item.label}

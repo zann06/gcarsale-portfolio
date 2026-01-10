@@ -3,9 +3,9 @@ export const siteConfig = {
   whatsappNumber: '6281234567890',
   instagramUrl: 'https://instagram.com/gcarsale',
   meta: {
-    title: 'Gcarsale | Premium Automotive Workshop Portfolio',
+    title: 'Gcarsale | Premium Automotive Consignment Portfolio',
     description:
-      'Gcarsale adalah brand consignment & workshop otomotif premium dengan pelayanan detail dan seleksi unit terbaik.',
+      'Gcarsale adalah brand consignment mobil premium dengan proses transparan, inspeksi detail, dan seleksi unit terbaik.',
   },
   stats: [
     { label: 'Followers', value: '48K+' },
@@ -16,7 +16,7 @@ export const siteConfig = {
   hero: {
     headline: 'YOUR RIDE, YOUR STYLE',
     subheadline:
-      'Curated, trustworthy, dan detail bengkel profesional untuk mobil premium Anda.',
+      'Curated, trustworthy, dan detail premium untuk consignment mobil Anda.',
   },
   contact: {
     address: 'Jakarta Selatan, Indonesia',

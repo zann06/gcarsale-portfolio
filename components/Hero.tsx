@@ -4,13 +4,7 @@ import ImageWithFallback from '@/components/ImageWithFallback';
 import Parallax from '@/components/Parallax';
 import WorkshopDoodles from '@/components/WorkshopDoodles';
 import { motion, useReducedMotion } from 'framer-motion';
-import {
-  BadgeCheck,
-  Car,
-  MessageCircle,
-  ShieldCheck,
-  Users,
-} from 'lucide-react';
+import { BadgeCheck, Car, MessageCircle, ShieldCheck, Users } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 import { createWhatsAppLink } from '@/lib/whatsapp';
 import { buttonHover, fadeUp, stagger } from '@/lib/motion';
@@ -21,7 +15,7 @@ export default function Hero() {
 
   const consultationLink = createWhatsAppLink(
     siteConfig.whatsappNumber,
-    'Halo Gcarsale, saya ingin konsultasi tentang layanan consignment.'
+    'Halo Gcarsale, saya ingin konsultasi titip jual (consignment) mobil.'
   );
 
   const consignLink = createWhatsAppLink(
@@ -99,10 +93,7 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-wrap items-center gap-4"
-          >
+          <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4">
             <motion.a
               href={consultationLink}
               {...(!prefersReducedMotion ? buttonHover : {})}
@@ -133,6 +124,7 @@ export default function Hero() {
         >
           {siteConfig.stats.map((stat, index) => {
             const Icon = statIcons[index] ?? ShieldCheck;
+
             return (
               <motion.div
                 variants={fadeUp}

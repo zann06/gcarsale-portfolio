@@ -7,7 +7,10 @@ import { fadeUp, viewport } from '@/lib/motion';
 
 export default function About() {
   return (
-    <section id="about" className="mx-auto max-w-6xl px-6 py-20">
+    <section id="about" className="relative mx-auto max-w-6xl px-6 py-20">
+      <div className="pointer-events-none absolute inset-0 blueprint-grid opacity-10" />
+      <div className="pointer-events-none absolute right-6 top-10 h-24 w-24 grease-smudge opacity-50" />
+
       <div className="grid gap-10 md:grid-cols-[1.1fr_1fr]">
         <motion.div
           initial="hidden"
@@ -26,9 +29,9 @@ export default function About() {
           </h2>
 
           <p className="text-sm text-charcoal/70">
-            Gcarsale hadir sebagai brand consignment yang memprioritaskan
-            transparansi, detail inspeksi, dan storytelling visual untuk setiap
-            mobil premium.
+            Gcarsale hadir sebagai brand consignment mobil premium yang
+            memprioritaskan transparansi, detail inspeksi, dan storytelling
+            visual untuk setiap unit.
           </p>
 
           <p className="text-sm text-charcoal/70">
@@ -59,6 +62,10 @@ export default function About() {
                 <ShieldCheck className="h-4 w-4 text-charcoal/70" />
                 Buyer terkurasi
               </div>
+            </div>
+
+            <div className="mt-6 inline-flex items-center rounded-full px-4 py-2 text-[10px] font-semibold uppercase text-charcoal/70 stamp">
+              Trusted Consignment
             </div>
           </div>
         </motion.div>

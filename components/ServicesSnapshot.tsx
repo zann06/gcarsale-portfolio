@@ -1,56 +1,65 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { Bolt, Car, CheckCircle, Settings, ShieldCheck, Sparkles, Wrench } from 'lucide-react';
-import { cardHover, fadeUp, stagger, viewport } from '@/lib/motion';
+import { Camera, Car, ShieldCheck, Users, Wrench } from 'lucide-react';
+import { createWhatsAppLink } from '@/lib/whatsapp';
+import { siteConfig } from '@/data/site';
+import { buttonHover, cardHover, fadeUp, stagger, viewport } from '@/lib/motion';
 
 const services = [
   {
-    title: 'Inspeksi & Appraisal',
-    description: 'Laporan detail kondisi, history servis, dan rekomendasi harga.',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Detailing / Coating',
-    description: 'Finishing premium agar unit siap tampil dan dipercaya buyer.',
-    icon: Sparkles,
-  },
-  {
-    title: 'Consignment Terkurasi',
-    description: 'Seleksi unit ketat, komunikasi jelas, dan strategi jual tepat.',
+    title: 'Consignment Premium',
+    description: 'Titip jual end-to-end: handling buyer, nego, sampai closing aman.',
     icon: Car,
   },
   {
-    title: 'Photo & Listing',
-    description: 'Foto cinematic, penulisan listing, dan distribusi channel.',
-    icon: Bolt,
+    title: 'Inspeksi & Transparansi',
+    description: 'Checklist jelas, dokumentasi rapi, highlight kondisi unit apa adanya.',
+    icon: ShieldCheck,
   },
   {
-    title: 'Buyer Filtering',
-    description: 'Screening calon buyer untuk menjaga kualitas transaksi.',
-    icon: CheckCircle,
+    title: 'Foto Cinematic & Storytelling',
+    description: 'Konten premium (foto/reels/copy) biar unit buyer-ready dan menarik.',
+    icon: Camera,
   },
   {
-    title: 'Paperwork Assist',
-    description: 'Bantuan dokumen, BPKB, dan proses balik nama aman.',
-    icon: Settings,
+    title: 'Marketing & Buyer Network',
+    description: 'Distribusi IG/WA, buyer terkurasi, dan filtering ketat.',
+    icon: Users,
+  },
+  {
+    title: 'Dokumen & Proses Aman',
+    description: 'Bantu flow transaksi dan dokumen supaya rapi & minim drama.',
+    icon: Wrench,
   },
 ];
 
 export default function ServicesSnapshot() {
   const prefersReducedMotion = useReducedMotion();
 
+  const consignLink = createWhatsAppLink(
+    siteConfig.whatsappNumber,
+    'Halo Gcarsale, saya ingin titip jual mobil (consignment). Bisa jelaskan proses & estimasinya?'
+  );
+
+  const consultLink = createWhatsAppLink(
+    siteConfig.whatsappNumber,
+    'Halo Gcarsale, saya ingin konsultasi dulu soal consignment mobil premium.'
+  );
+
   return (
     <section id="services" className="relative mx-auto max-w-6xl px-6 py-20">
       <div className="pointer-events-none absolute inset-0 blueprint-grid opacity-10" />
+      <div className="pointer-events-none absolute right-10 top-6 h-24 w-24 grease-smudge opacity-60" />
+
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="section-heading flex items-center gap-2">
             <Wrench className="h-4 w-4 text-charcoal/70" />
-            Services Snapshot
+            Consignment Snapshot
           </p>
           <h2 className="mt-2 text-3xl font-semibold uppercase">
-            Layanan Bengkel & Consignment
+            Proses yang Rapi. Unit Jadi Buyer-Ready.
           </h2>
         </div>
         <div className="hidden h-[1px] flex-1 bg-charcoal/10 md:block" />
@@ -60,7 +69,7 @@ export default function ServicesSnapshot() {
         initial="hidden"
         whileInView="show"
         viewport={viewport}
-        variants={stagger(0.1)}
+        variants={stagger(0.08)}
         className="mt-8 grid gap-4 md:grid-cols-3"
       >
         {services.map((service) => {
@@ -86,6 +95,32 @@ export default function ServicesSnapshot() {
             </motion.div>
           );
         })}
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        variants={stagger(0.12)}
+        className="mt-8 flex flex-wrap gap-3"
+      >
+        <motion.a
+          href={consignLink}
+          {...(!prefersReducedMotion ? buttonHover : {})}
+          className="inline-flex items-center gap-2 rounded-full bg-charcoal px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40"
+          aria-label="Titip Jual via WhatsApp"
+        >
+          Titip Jual via WhatsApp
+        </motion.a>
+
+        <motion.a
+          href={consultLink}
+          {...(!prefersReducedMotion ? buttonHover : {})}
+          className="inline-flex items-center gap-2 rounded-full border border-charcoal/30 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-charcoal/40"
+          aria-label="Konsultasi via WhatsApp"
+        >
+          Konsultasi via WhatsApp
+        </motion.a>
       </motion.div>
     </section>
   );

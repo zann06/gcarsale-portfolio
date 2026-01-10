@@ -59,8 +59,8 @@ export default function Merchandise() {
               Gcarsale Workshirt
             </h2>
             <p className="mt-4 text-sm text-charcoal/70">
-              Kemeja bengkel premium dengan bahan breathable dan fit modern untuk
-              komunitas Gcarsale.
+              Kemeja premium dengan bahan breathable dan fit modern untuk komunitas
+              Gcarsale.
             </p>
           </div>
 

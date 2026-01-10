@@ -30,6 +30,7 @@ export default function ContactCTA() {
       <div className="absolute inset-0 opacity-15">
         <div className="h-full w-full cta-grid-overlay" />
       </div>
+
       <div className="pointer-events-none absolute left-10 top-10 h-40 w-40 grease-smudge" />
 
       <div className="relative mx-auto max-w-6xl">

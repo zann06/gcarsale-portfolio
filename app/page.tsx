@@ -1,4 +1,5 @@
 import Hero from '@/components/Hero';
+import WhyGcarsale from '@/components/WhyGcarsale';
 import ServicesSnapshot from '@/components/ServicesSnapshot';
 import FeaturedUnits from '@/components/FeaturedUnits';
 import ConsignmentHighlight from '@/components/ConsignmentHighlight';
@@ -9,7 +10,6 @@ import ProcessTimeline from '@/components/ProcessTimeline';
 import FAQ from '@/components/FAQ';
 import ContactCTA from '@/components/ContactCTA';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
-
 import { Bolt, Wrench } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 
@@ -51,6 +51,7 @@ export default function Home() {
       />
 
       <Hero />
+      <WhyGcarsale />
       <ServicesSnapshot />
 
       <div className="relative">
