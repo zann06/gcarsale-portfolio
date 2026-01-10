@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Placeholder image">
+  <rect width="1200" height="800" fill="#e9e4d8" />
+  <rect x="40" y="40" width="1120" height="720" fill="none" stroke="#1a1d24" stroke-width="6" stroke-dasharray="12 10" />
+  <g fill="none" stroke="#1a1d24" stroke-width="2" opacity="0.5">
+    <path d="M120 160h960" />
+    <path d="M120 320h960" />
+    <path d="M120 480h960" />
+    <path d="M120 640h960" />
+  </g>
+  <g fill="none" stroke="#1a1d24" stroke-width="2" opacity="0.4">
+    <path d="M240 120v560" />
+    <path d="M480 120v560" />
+    <path d="M720 120v560" />
+    <path d="M960 120v560" />
+  </g>
+  <text x="50%" y="50%" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#1a1d24">
+    Gcarsale Placeholder
+  </text>
+</svg>

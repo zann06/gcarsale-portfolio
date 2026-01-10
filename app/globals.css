@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-charcoal font-body antialiased;
+  background-image: linear-gradient(
+      0deg,
+      rgba(245, 241, 232, 0.98),
+      rgba(245, 241, 232, 0.98)
+    ),
+    url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320"%3E%3Cg fill="none" stroke="%23c9c4b7" stroke-width="1" opacity="0.35"%3E%3Cpath d="M0 40h320M0 120h320M0 200h320M0 280h320"/%3E%3Cpath d="M40 0v320M120 0v320M200 0v320M280 0v320"/%3E%3C/g%3E%3C/svg%3E');
+  background-size: 320px 320px;
+}
+
+.sketch-line {
+  background-image: linear-gradient(
+    90deg,
+    rgba(15, 17, 21, 0.25),
+    rgba(15, 17, 21, 0.05)
+  );
+  height: 1px;
+}
+
+.card-paper {
+  @apply bg-white/90 border border-sketch/80 shadow-sketch backdrop-blur-sm;
+  background-image: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.9)
+    ),
+    radial-gradient(circle at 20% 20%, rgba(15, 17, 21, 0.04), transparent 55%);
+}
+
+.section-heading {
+  @apply font-headline uppercase tracking-[0.2em] text-sm text-charcoal/70;
+}
+
+.headline {
+  @apply font-headline uppercase text-4xl md:text-6xl tracking-tight;
+}
+
+.paper-texture {
+  background-image: radial-gradient(
+      circle at 20% 20%,
+      rgba(15, 17, 21, 0.04),
+      transparent 50%
+    ),
+    radial-gradient(circle at 80% 30%, rgba(15, 17, 21, 0.03), transparent 45%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.7));
+}
+
+.blueprint-grid {
+  background-image: linear-gradient(
+      transparent 31px,
+      rgba(15, 17, 21, 0.06) 32px
+    ),
+    linear-gradient(90deg, transparent 31px, rgba(15, 17, 21, 0.05) 32px);
+  background-size: 32px 32px;
+}
+
+.pencil-stroke {
+  position: relative;
+}
+
+.pencil-stroke::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 6px;
+  opacity: 0.25;
+  background: linear-gradient(90deg, rgba(15, 17, 21, 0.2), transparent);
+}
+
+.hero-grid-overlay {
+  background-image: linear-gradient(
+      transparent 60px,
+      rgba(255, 255, 255, 0.08) 61px
+    ),
+    linear-gradient(90deg, transparent 60px, rgba(255, 255, 255, 0.08) 61px);
+  background-size: 70px 70px;
+}
+
+.cta-grid-overlay {
+  background-image: linear-gradient(
+      transparent 60px,
+      rgba(255, 255, 255, 0.2) 61px
+    ),
+    linear-gradient(90deg, transparent 60px, rgba(255, 255, 255, 0.2) 61px);
+  background-size: 70px 70px;
+}
+
+.grease-smudge {
+  background: radial-gradient(circle, rgba(15, 17, 21, 0.12), transparent 65%);
+  filter: blur(12px);
+}
+
+.stamp {
+  border: 1px dashed rgba(15, 17, 21, 0.4);
+  transform: rotate(-4deg);
+  letter-spacing: 0.2em;
+}
+
+.subtle-grid {
+  background-image: linear-gradient(
+      transparent 31px,
+      rgba(15, 17, 21, 0.05) 32px
+    ),
+    linear-gradient(90deg, transparent 31px, rgba(15, 17, 21, 0.05) 32px);
+  background-size: 32px 32px;
+}
