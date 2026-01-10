@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef } from 'react';
 import ImageWithFallback from '@/components/ImageWithFallback';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { FeaturedUnit } from '@/data/featuredUnits';
 import { siteConfig } from '@/data/site';
 import { createWhatsAppLink } from '@/lib/whatsapp';
@@ -24,6 +24,7 @@ type UnitModalProps = {
 export default function UnitModal({ unit, onClose }: UnitModalProps) {
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   const whatsappLink = useMemo(() => {
     if (!unit) return '#';
@@ -82,6 +83,7 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={prefersReducedMotion ? { duration: 0.2 } : { duration: 0.4 }}
           role="dialog"
           aria-modal="true"
           aria-labelledby="unit-title"
@@ -89,19 +91,26 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
         >
           <motion.div
             ref={dialogRef}
-            className="card-paper relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl"
-            initial={{ scale: 0.95, opacity: 0 }}
+            className="card-paper paper-texture relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl"
+            initial={{ scale: 0.96, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
+            exit={{ scale: 0.96, opacity: 0 }}
+            transition={
+              prefersReducedMotion
+                ? { duration: 0.2 }
+                : { type: 'spring', stiffness: 220, damping: 20 }
+            }
             onClick={(event) => event.stopPropagation()}
           >
             <button
               onClick={onClose}
               className="absolute right-4 top-4 rounded-full border border-charcoal/20 px-3 py-1 text-xs uppercase"
               aria-label="Tutup modal"
+              type="button"
             >
               Close
             </button>
+
             <div className="relative h-64 w-full">
               <ImageWithFallback
                 src={unit.image}
@@ -111,6 +120,7 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
                 sizes="100vw"
               />
             </div>
+
             <div className="space-y-4 p-6">
               <div>
                 <p className="section-heading">Detail Unit</p>
@@ -121,6 +131,7 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
                   {unit.year} • {unit.price}
                 </p>
               </div>
+
               <ul className="grid gap-2 text-sm text-charcoal/80">
                 {unit.highlights.map((highlight) => (
                   <li key={highlight} className="flex items-center gap-2">
@@ -129,7 +140,9 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
                   </li>
                 ))}
               </ul>
+
               <p className="text-sm text-charcoal/70">{unit.description}</p>
+
               <div className="flex flex-wrap gap-3">
                 {unit.status === 'AVAILABLE' ? (
                   <a
@@ -143,9 +156,11 @@ export default function UnitModal({ unit, onClose }: UnitModalProps) {
                     Unit Sold
                   </span>
                 )}
+
                 <button
                   onClick={onClose}
                   className="rounded-full border border-charcoal/20 px-6 py-3 text-sm font-semibold uppercase"
+                  type="button"
                 >
                   Tutup
                 </button>

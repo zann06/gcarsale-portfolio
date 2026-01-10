@@ -1,13 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { insights, type Insight } from '@/data/insights';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0 },
-};
+import { cardHover, fadeUp, stagger, viewport } from '@/lib/motion';
 
 const getFocusableElements = (container: HTMLElement | null) => {
   if (!container) return [];
@@ -21,6 +17,7 @@ const getFocusableElements = (container: HTMLElement | null) => {
 export default function Insights() {
   const [active, setActive] = useState<Insight | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (!active) return;
@@ -52,7 +49,9 @@ export default function Insights() {
   }, [active]);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
+    <section className="relative mx-auto max-w-6xl px-6 py-20">
+      <div className="pointer-events-none absolute inset-0 blueprint-grid opacity-10" />
+
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="section-heading">Gcarsale Insight</p>
@@ -66,15 +65,16 @@ export default function Insights() {
       <motion.div
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: '-80px' }}
-        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
+        viewport={viewport}
+        variants={stagger(0.1)}
         className="mt-8 grid gap-6 md:grid-cols-3"
       >
         {insights.map((item) => (
           <motion.article
             key={item.id}
             variants={fadeUp}
-            className="card-paper flex h-full flex-col rounded-3xl p-6"
+            {...(!prefersReducedMotion ? cardHover : {})}
+            className="card-paper paper-texture flex h-full flex-col rounded-3xl p-6 transition-transform md:hover:-rotate-1"
           >
             <p className="text-xs uppercase tracking-[0.2em] text-charcoal/60">
               {item.date}
@@ -100,6 +100,7 @@ export default function Insights() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={prefersReducedMotion ? { duration: 0.2 } : { duration: 0.4 }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="insight-title"
@@ -107,9 +108,14 @@ export default function Insights() {
             <motion.div
               ref={dialogRef}
               className="card-paper w-full max-w-2xl rounded-3xl p-6"
-              initial={{ scale: 0.95, opacity: 0 }}
+              initial={{ scale: 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
+              exit={{ scale: 0.96, opacity: 0 }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0.2 }
+                  : { type: 'spring', stiffness: 220, damping: 20 }
+              }
             >
               <div className="flex items-center justify-between">
                 <p className="section-heading">Insight</p>
@@ -122,6 +128,7 @@ export default function Insights() {
                   Close
                 </button>
               </div>
+
               <h3 id="insight-title" className="mt-4 text-2xl font-semibold">
                 {active.title}
               </h3>

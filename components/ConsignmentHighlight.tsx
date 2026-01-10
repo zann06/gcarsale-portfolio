@@ -1,18 +1,22 @@
 'use client';
 
 import ImageWithFallback from '@/components/ImageWithFallback';
-import { motion } from 'framer-motion';
+import Parallax from '@/components/Parallax';
+import WorkshopDoodles from '@/components/WorkshopDoodles';
+import { motion, useReducedMotion } from 'framer-motion';
 import { consignmentUnits } from '@/data/consignment';
 import { siteConfig } from '@/data/site';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0 },
-};
+import { cardHover, fadeUp, stagger, viewport } from '@/lib/motion';
 
 export default function ConsignmentHighlight() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
+    <section className="relative mx-auto max-w-6xl px-6 py-20">
+      <Parallax speed={0.15} direction="up" rotate={-2}>
+        <WorkshopDoodles className="pointer-events-none absolute inset-0 text-charcoal" />
+      </Parallax>
+
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="section-heading">Consignment Highlight</p>
@@ -26,15 +30,16 @@ export default function ConsignmentHighlight() {
       <motion.div
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: '-80px' }}
-        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
+        viewport={viewport}
+        variants={stagger(0.1)}
         className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible"
       >
         {consignmentUnits.map((unit) => (
           <motion.div
             key={unit.id}
             variants={fadeUp}
-            className="card-paper min-w-[240px] flex-1 snap-start rounded-3xl p-4 md:min-w-0"
+            {...(!prefersReducedMotion ? cardHover : {})}
+            className="card-paper paper-texture min-w-[240px] flex-1 snap-start rounded-3xl p-4 transition-transform md:min-w-0 md:hover:-rotate-1"
           >
             <div className="relative h-40 w-full">
               <ImageWithFallback
@@ -45,6 +50,7 @@ export default function ConsignmentHighlight() {
                 sizes="(max-width: 768px) 70vw, 33vw"
               />
             </div>
+
             <div className="mt-4">
               <h3 className="text-lg font-semibold">{unit.name}</h3>
               <p className="text-sm text-charcoal/60">
@@ -55,7 +61,13 @@ export default function ConsignmentHighlight() {
         ))}
       </motion.div>
 
-      <div className="mt-8">
+      <div className="mt-6 flex items-center justify-between gap-4 text-xs uppercase tracking-[0.2em] text-charcoal/50">
+        <span className="hidden md:inline">Geser untuk melihat unit lainnya</span>
+        <span className="inline md:hidden">Swipe untuk lihat unit lainnya</span>
+        <span className="h-[1px] flex-1 bg-charcoal/20" />
+      </div>
+
+      <div className="mt-6">
         <a
           href={siteConfig.instagramUrl}
           className="inline-flex items-center gap-3 rounded-full border border-charcoal/30 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:bg-charcoal hover:text-white"

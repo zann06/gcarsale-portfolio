@@ -2,9 +2,10 @@
 
 import { useMemo, useState } from 'react';
 import ImageWithFallback from '@/components/ImageWithFallback';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { siteConfig } from '@/data/site';
 import { createWhatsAppLink } from '@/lib/whatsapp';
+import { buttonHover, fadeUp, viewport } from '@/lib/motion';
 
 const sizes = ['S', 'M', 'L', 'XL'];
 const colors = ['Black', 'Gray', 'Navy'];
@@ -12,6 +13,7 @@ const colors = ['Black', 'Gray', 'Navy'];
 export default function Merchandise() {
   const [size, setSize] = useState('M');
   const [color, setColor] = useState('Black');
+  const prefersReducedMotion = useReducedMotion();
 
   const link = useMemo(() => {
     return createWhatsAppLink(
@@ -24,9 +26,10 @@ export default function Merchandise() {
     <section className="mx-auto max-w-6xl px-6 py-20">
       <div className="grid gap-10 md:grid-cols-[1.1fr_1fr]">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          variants={fadeUp}
           className="relative"
         >
           <ImageWithFallback
@@ -38,10 +41,12 @@ export default function Merchandise() {
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </motion.div>
+
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          variants={fadeUp}
           className="flex flex-col justify-center gap-6"
         >
           <div>
@@ -77,6 +82,7 @@ export default function Merchandise() {
                 ))}
               </div>
             </div>
+
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-charcoal/60">
                 Warna
@@ -100,12 +106,13 @@ export default function Merchandise() {
             </div>
           </div>
 
-          <a
+          <motion.a
             href={link}
+            {...(!prefersReducedMotion ? buttonHover : {})}
             className="inline-flex w-fit items-center justify-center rounded-full bg-whatsapp px-6 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:translate-y-[-2px] hover:shadow-xl"
           >
             Order via WhatsApp
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>

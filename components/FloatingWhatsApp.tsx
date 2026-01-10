@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { createWhatsAppLink } from '@/lib/whatsapp';
 import { siteConfig } from '@/data/site';
+import { buttonHover } from '@/lib/motion';
 
 const menuItems = [
   {
@@ -26,6 +27,7 @@ const menuItems = [
 
 export default function FloatingWhatsApp() {
   const [open, setOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
@@ -49,14 +51,16 @@ export default function FloatingWhatsApp() {
           </motion.div>
         ) : null}
       </AnimatePresence>
-      <button
+
+      <motion.button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         className="flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-charcoal shadow-lg"
         aria-label="Buka menu WhatsApp"
+        {...(!prefersReducedMotion ? buttonHover : {})}
       >
         WA
-      </button>
+      </motion.button>
     </div>
   );
 }
